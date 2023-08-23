@@ -1,0 +1,39 @@
+LANGUAGE VERSIONS
+C89 (core development)
+C99 (some features such as same line definitions, stdint, bool, better comments)
+
+NAMING CONVENTIONS
+
+file_names.c		
+non_constant_variable_names
+s_static_variable_names
+CONSTANT_VARIABLE_NAMES
+all_function_names()
+TypeNames
+
+ADDITIONAL NOTES
+
+1. Zero external dependencies introduced (only what is included with the operating system).
+2. Avoid additional includes for minimal code usage (write custom implementations rather than importing a whole header).
+3. Pass parameters as pointers when incoming data is larger than 8 bytes.
+4. Prefer standardized integers when possible.
+5. Single layer use of ternary operator assignment (anything nested should become if/else statements or switch).
+6. Elect for if/else statements over switches when able.
+7. No function overloading (give everything descriptive names, no ambiguity).
+8. Header file comments state what it does, C file comments says how it works.
+
+Mark new header file sections like this...
+
+/*-------------------------
+---SECTION DECLARATIONS----
+-------------------------*/
+
+Mark new C file sections like this...
+
+/*-------------------------
+----SECTION DEFINITIONS----
+-------------------------*/
+
+This is easily searchable and identifiable by "SECTION + DECLARATIONS"
+
+

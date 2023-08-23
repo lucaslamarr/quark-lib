@@ -1,0 +1,7 @@
+August 22, 2023
+	Added Vector2 structure that holds floating point numbers
+	Created functions for getting the center positions in between two vector2's
+	Replaced previous Math.h usage of fabs() with custom function for getting absolute values
+	Created a sign flipping function
+	Initial comments
+	Listed out code standards and conventions
