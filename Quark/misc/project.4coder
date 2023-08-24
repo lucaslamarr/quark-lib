@@ -1,12 +1,14 @@
 version(1);
 
-project_name = "Quark";
+project_name = "Hello World";
 
 patterns = {
 	"*.c",
 	"*.cpp",
+	"*.ds",
 	"*.h",
 	"*.bat",
+	"*.sh",
 	"*.4coder",
 };
 
@@ -16,7 +18,7 @@ blacklist_patterns = {
 
 load_paths = {
 	{
-		{ {"."}, .recursive = true, .relative = true }, .os = "win"
+		{ .path = ".", .recursive = true, .relative = true }, .os = "win"
 	},
 };
 
@@ -28,7 +30,7 @@ command_list = {
 		.save_dirty_files = true,
 		.cursor_at_end = false,
 		.cmd = {
-			{ "build.bat", .os = "win" },
+			{ "..\misc\build.bat", .os = "win" },
 		},
 	},
 	
@@ -39,10 +41,10 @@ command_list = {
 		.save_dirty_files = true,
 		.cursor_at_end = false,
 		.cmd = {
-			{ "run.bat", .os = "win" },
+			{ "..\misc\run.bat", .os = "win" },
 		},
 	},
 };
 
-fkey_command[1] = "build";
-fkey_command[5] = "run";
+fkey_command[5] = "build";
+fkey_command[1] = "run";

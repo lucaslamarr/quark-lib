@@ -5,3 +5,10 @@ August 22, 2023
 	Created a sign flipping function
 	Initial comments
 	Listed out code standards and conventions
+
+August 23, 2023
+	Updated 4coder project bindings to support build.bat hotkey
+	Implemented a macro to toggle between demo mode and packaging mode
+	Added new get_raised_power_value_float() function
+	Added new get_modulus_value_float() function that is currently broken and needs work
+	Added functions for rounding, as well as force rounding up or down. Needs modulus function to work.
