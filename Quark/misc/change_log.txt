@@ -12,3 +12,8 @@ August 23, 2023
 	Added new get_raised_power_value_float() function
 	Added new get_modulus_value_float() function that is currently broken and needs work
 	Added functions for rounding, as well as force rounding up or down. Needs modulus function to work.
+
+August 30, 2023
+	Created todo.bat file that will print out the file name, line number, and contents of all //TODO: comments
+	Re-implementation of the limits.h header file contents for integer values. Floating point numbers coming later.
+	Added Vector3 implementations of the previous Vector2 functions
