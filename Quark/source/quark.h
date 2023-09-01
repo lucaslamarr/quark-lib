@@ -2,24 +2,17 @@
 #define QUARK_H
 
 //TODO: All implementations need to work for other appropriate and similar data types (chars, ints, shorts, longs, long long, floats, doubles, long doubles)
-
 //TODO: String manipulations
 //TODO: Custom boolean implementation
 //TODO: Introduce generic drawing module called Quark2D.h (seprate, optional for game devs)
 //TODO: Limits for floating point types
-
 //TODO: New common struct ideas
-//TODO: Make functions polymorphic with overrides (nothing clever, just simple functions)
-
-//TODO: Absolute value for ints
 //TODO: Return remainder and quotient functions
-//TODO: Function that returns smaller / larger value of 2 choices
-//TODO: Get value difference between two numbers (larger - smaller = difference)
 
 /*-------------------------
  -TYPE LIMITS DECLARATIONS--
  -------------------------*/
-
+get_
 //NOTE: Returns shorts instead of chars because I do not want to show a symbol.
 short get_max_char_value();
 short get_min_char_value();

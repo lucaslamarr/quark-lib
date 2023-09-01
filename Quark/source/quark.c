@@ -4,28 +4,29 @@
  -TYPE LIMITS DECLARATIONS--
  -------------------------*/
 
-short get_max_char_value() { return 127; }
-short get_min_char_value() { return -128; }
-short get_max_unsigned_char_value() { return 255; }
+//NOTE: Using a short for chars so that I return a small number and not a symbol
 
-short get_max_short_value() { return 32767; }
-short get_min_short_value() { return -32768; }
-unsigned short get_max_unsigned_short_value() { return 65535; }
+short get_max_char_value()                            { return 127;  }
+short get_min_char_value()                            { return -128; }
+unsigned short get_max_unsigned_char_value()          { return 255;  }
 
-int get_max_int_value() { return 2147483647; }
-int get_min_int_value() { return -2147483648; }
-unsigned int get_max_unsigned_int_value() { return 4294967295; }
+short get_max_short_value()                           { return 32767;  }
+short get_min_short_value()                           { return -32768; }
+unsigned short get_max_unsigned_short_value()         { return 65535;  }
 
-long get_max_long_value() { return 2147483647; }
-long get_min_long_value() { return -2147483648; }
-unsigned long get_max_unsigned_long_value() { return 4294967295; }
+int get_max_int_value()                               { return 2147483647;  }
+int get_min_int_value()                               { return -2147483648; }
+unsigned int get_max_unsigned_int_value()             { return 4294967295;  }
 
-long long get_max_long_long_value() { return 9223372036854775807; }
+long get_max_long_value()                             { return 2147483647;  }
+long get_min_long_value()                             { return -2147483648; }
+unsigned long get_max_unsigned_long_value()           { return 4294967295;  }
 
-//NOTE: Actual limit is +1 but gcc does not match the limits.h macro for the min value.
-long long get_min_long_long_value() { return -9223372036854775807; } 
-
+long long get_max_long_long_value()                   { return 9223372036854775807;     }
+long long get_min_long_long_value()                   { return -9223372036854775807;    }
 unsigned long long get_max_unsigned_long_long_value() { return 18446744073709551615ULL; }
+
+//NOTE: Actual min limit of long long is +1 but gcc does not match the limits.h macro for the min value.
 
 /*-------------------------
  ---VECTOR 2 DEFINITIONS----
@@ -111,6 +112,11 @@ float get_absolute_value_float(float original_value)
     return (original_value < 0.0f) ? original_value * -1.0f : original_value; //Gets the value without sign information.
 }
 
+int get_absolute_value_int(int original_value) 
+{
+    return (original_value < 0) ? original_value * -1 : original_value; //Gets the value without sign information.
+}
+
 float get_raised_power_value_float(float original_value, int exponent)
 {
 	//Takes the original value and multiplies itself a number of times determined by the exponent
@@ -162,5 +168,44 @@ void round_down_float(float *original_value)
 	*original_value -= value_to_remove;
 }
 
+float get_smaller_number_float(float a, float b)
+{
+    return (a > b) : a ? b;
+}
+
+int get_smaller_number_int(int a, int b)
+{
+    return (a > b) : a ? b;
+}
+
+float get_larger_number_float(float a, float b)
+{
+    return (a > b) : a ? b;
+}
+
+int get_larger_number_int(int a, int b)
+{
+    return (a > b) : a ? b;
+}
+
+float get_difference_float(float a, float b)
+{
+    if (a > b)
+        return a - b;
+    else if (b > a)
+        return b - a;
+    else
+        return 0.0f;
+}
+
+int get_difference_int(int a, int b)
+{
+    if (a > b)
+        return a - b;
+    else if (b > a)
+        return b - a;
+    else
+        return 0;
+}
 
 

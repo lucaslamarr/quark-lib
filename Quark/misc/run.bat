@@ -1,7 +1,8 @@
 @echo off
+cls
 if not exist build mkdir ..\build
 pushd ..\build
-start quark.exe
+start quark-lib.exe
 popd
 
 

@@ -17,3 +17,8 @@ August 30, 2023
 	Created todo.bat file that will print out the file name, line number, and contents of all //TODO: comments
 	Re-implementation of the limits.h header file contents for integer values. Floating point numbers coming later.
 	Added Vector3 implementations of the previous Vector2 functions
+
+August 31, 2023
+	Absolute value function for ints
+	Functions that return the larger or smaller value of floats / ints
+	Functions that returns the value difference between floats / ints
