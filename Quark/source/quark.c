@@ -6,9 +6,9 @@
 
 //NOTE: Using a short for chars so that I return a small number and not a symbol
 
-short get_max_char_value()                            { return 127;  }
-short get_min_char_value()                            { return -128; }
-unsigned short get_max_unsigned_char_value()          { return 255;  }
+char get_max_char_value()                             { return 127;  }
+char get_min_char_value()                             { return -128; }
+unsigned char get_max_unsigned_char_value()           { return 255;  }
 
 short get_max_short_value()                           { return 32767;  }
 short get_min_short_value()                           { return -32768; }
@@ -26,6 +26,7 @@ long long get_max_long_long_value()                   { return 92233720368547758
 long long get_min_long_long_value()                   { return -9223372036854775807;    }
 unsigned long long get_max_unsigned_long_long_value() { return 18446744073709551615ULL; }
 
+//NOTE: All values checked alongside the C99 Limits.h macros.
 //NOTE: Actual min limit of long long is +1 but gcc does not match the limits.h macro for the min value.
 
 /*-------------------------
@@ -114,7 +115,7 @@ float get_absolute_value_float(float original_value)
 
 int get_absolute_value_int(int original_value) 
 {
-    return (original_value < 0) ? original_value * -1 : original_value; //Gets the value without sign information.
+    return (original_value < 0.0f) ? original_value * -1.0f : original_value; //Gets the value without sign information.
 }
 
 float get_raised_power_value_float(float original_value, int exponent)
@@ -130,25 +131,63 @@ float get_raised_power_value_float(float original_value, int exponent)
 	return returned_value;
 }
 
-void flip_sign_float(float *original_value)
+int get_raised_power_value_int(int original_value, int exponent)
 {
-    if (*original_value != 0.0f)
-        *original_value *= -1.0f; //Multiplies the original value by -1 which causes the sign information to flip.
+	//Takes the original value and multiplies itself a number of times determined by the exponent
+    int returned_value = original_value; //Can't start from zero because this number gets multiplied
+	
+	for(int i = 1; i < exponent; i++)
+	{
+		returned_value *= original_value;
+	}
+	
+	return returned_value;
 }
 
+float get_flipped_sign_float(float original_value)
+{
+    if (original_value != 0.0f)
+        return original_value *= -1.0f; //Multiplies the original value by -1 which causes the sign information to flip.
+}
+
+int get_flipped_sign_int(int original_value)
+{
+    if (original_value != 0)
+        return original_value *= -1; //Multiplies the original value by -1 which causes the sign information to flip.
+}
+
+void flip_sign_float(float *original_value)
+{
+    *original_value = get_flipped_sign_float(*original_value);
+}
+
+void flip_sign_int(int *original_value)
+{
+    *original_value = get_flipped_sign_int(*original_value);
+}
 
 //TODO: This needs more work in order to continue writing the rounding functions. Can't divide by 1...
-float get_modulus_value_float(float *original_value, float divisor)
+float get_modulus_value_float(float original_value, float divisor)
 {
-	float modulus_value = (*original_value / divisor);
-	modulus_value = *original_value - modulus_value;
+	float modulus_value = (original_value / divisor);
+	modulus_value = original_value - modulus_value;
 	
 	return modulus_value;
 }
 
+//TODO: This needs more work in order to continue writing the rounding functions. Can't divide by 1...
+int get_modulus_value_int(int original_value, float divisor)
+{
+    int modulus_value = (original_value / divisor);
+	modulus_value = original_value - modulus_value;
+	
+	return modulus_value;
+}
+
+//TODO: Comment these once working.
 void round_float(float *original_value)
 {
-	float value_to_remove = get_modulus_value_float(original_value, 1.0);
+	float value_to_remove = get_modulus_value_float(*original_value, 1.0);
 	
 	if (value_to_remove >= 0.5f)
 		round_up_float(original_value);
@@ -158,38 +197,39 @@ void round_float(float *original_value)
 
 void round_up_float(float *original_value)
 {
-	float value_to_remove = get_modulus_value_float(original_value, 1.0);
+	float value_to_remove = get_modulus_value_float(*original_value, 1.0);
 	*original_value -= value_to_remove + 1.0f;
 }
 
 void round_down_float(float *original_value)
 {
-	float value_to_remove = get_modulus_value_float(original_value, 1.0);
+	float value_to_remove = get_modulus_value_float(*original_value, 1.0);
 	*original_value -= value_to_remove;
 }
 
 float get_smaller_number_float(float a, float b)
 {
-    return (a > b) : a ? b;
+    return (a > b) ? a : b; //If number a is smaller than b, return it and vice versa.
 }
 
 int get_smaller_number_int(int a, int b)
 {
-    return (a > b) : a ? b;
+    return (a > b) ? a : b; //Same as floating point version.
 }
 
 float get_larger_number_float(float a, float b)
 {
-    return (a > b) : a ? b;
+    return (a > b) ? a : b; //If number a is larger than b, return it and vice versa.
 }
 
 int get_larger_number_int(int a, int b)
 {
-    return (a > b) : a ? b;
+    return (a > b) ? a : b; //Same as floating point version.
 }
 
 float get_difference_float(float a, float b)
 {
+    //Take the larger number and subtract the smaller number.
     if (a > b)
         return a - b;
     else if (b > a)
@@ -200,6 +240,7 @@ float get_difference_float(float a, float b)
 
 int get_difference_int(int a, int b)
 {
+    //Same as floating point version.
     if (a > b)
         return a - b;
     else if (b > a)
@@ -207,5 +248,3 @@ int get_difference_int(int a, int b)
     else
         return 0;
 }
-
-

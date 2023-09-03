@@ -22,3 +22,10 @@ August 31, 2023
 	Absolute value function for ints
 	Functions that return the larger or smaller value of floats / ints
 	Functions that returns the value difference between floats / ints
+
+September 02, 2023
+	Added absolute value functions for integers
+	Added get functions for absolute values
+	1 byte boolean implementation via a struct containing a char
+	#defines for true = 1 and false = 0
+	Started writing demo program

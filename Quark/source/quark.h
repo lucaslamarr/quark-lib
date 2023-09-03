@@ -1,22 +1,33 @@
 #ifndef QUARK_H
 #define QUARK_H
 
-//TODO: All implementations need to work for other appropriate and similar data types (chars, ints, shorts, longs, long long, floats, doubles, long doubles)
-//TODO: String manipulations
-//TODO: Custom boolean implementation
-//TODO: Introduce generic drawing module called Quark2D.h (seprate, optional for game devs)
-//TODO: Limits for floating point types
-//TODO: New common struct ideas
-//TODO: Return remainder and quotient functions
+//TODO: All implementations need to work for other appropriate and similar data types 
+//TODO: Test all and write demo program
+//TODO: Review all comments and codebase structuring
+
+//FUTURE TODO: C# Wrapper
+
+/*-------------------------
+ -----BOOL DECLARATIONS-----
+ -------------------------*/
+
+#define false 0
+#define true 1
+
+typedef struct 
+{ 
+    char state;
+} Bool;
+
 
 /*-------------------------
  -TYPE LIMITS DECLARATIONS--
  -------------------------*/
-get_
-//NOTE: Returns shorts instead of chars because I do not want to show a symbol.
-short get_max_char_value();
-short get_min_char_value();
-short get_max_unsigned_char_value();
+
+//NOTE: Returns the ASCII symbol but can be casted to an integer type
+char get_max_char_value();
+char get_min_char_value();
+unsigned char get_max_unsigned_char_value();
 
 short get_max_short_value();
 short get_min_short_value();
@@ -75,15 +86,22 @@ Vector3 vector3_get_meeting_point_all(Vector3, Vector3);
 //      While slightly long-winded, this allows the functions to be used in different ways.
 
 float get_absolute_value_float(float); //Returns the absolute value of a positive or negative number.
+int get_absolute_value_int(int); //Same thing as the floating point version.
+
 float get_raised_power_value_float(float, int); //Raises the provided value to the n power.
-float get_modulus_value_float(float*, float); //The modulus only works on integers by default.
+int get_raised_power_value_int(int, int); //Same thing as the floating point version.
+
+float get_modulus_value_float(float, float); //The modulus only works on integers by default.
+int get_modulus_value_int(int, float); //Same thing as the floating point version.
+
+float get_flipped_sign_float(float); //Returns the argument value with the opposite sign.
+int get_flipped_sign_int(int); //Same thing as the floating point version.
 
 void flip_sign_float(float*); //Makes a positive number negative, and a negative number positive.
+void flip_sign_int(int*); //Same thing as the floating point version.
 
 void round_float(float*); //Anything .5 and above will be rounded to the next whole number, anything has the decimal removed.
 void round_up_float(float*); //Removes everything after the decimal place and increases by 1 whole number.
 void round_down_float(float*); //Removes everything after the decimal place no matter what the value is.
-
-//TODO: Square root
 
 #endif //QUARK_H
