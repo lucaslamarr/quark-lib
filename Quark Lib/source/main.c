@@ -22,9 +22,9 @@ void run_demo()
     printf("Min and Max Values\n");
     printf("-----------------------------------------\n\n");
     {
-        printf("Max Char Value %hhd\n", get_max_char_value());
-        printf("Min Char Value %hhd\n", get_min_char_value());
-        printf("Max Unsigned Char Value %hhu\n\n", get_max_unsigned_char_value());
+        printf("Max Char Value %d\n", get_max_char_value());
+        printf("Min Char Value %d\n", get_min_char_value());
+        printf("Max Unsigned Char Value %u\n\n", get_max_unsigned_char_value());
         
         printf("Max Short Value %d\n", get_max_short_value());
         printf("Min Short Value %d\n", get_min_short_value());
@@ -132,7 +132,7 @@ GCC extensions, I do not want to add code that will not run on the base GNU GCC 
         round_float_down(&round_test_float); 
         printf("Float Rounded Down To %f\n\n", round_test_float);
         
-        printf("Floating Point Modulus 82.6 % 12 = %f\n", get_mod_value_float(82.6, 12));
+        printf("Floating Point Modulus 82.6 %% 12 = %f\n", get_mod_value_float(82.6, 12));
     }
     
     scanf_s(".");

@@ -155,12 +155,16 @@ float get_flipped_sign_float(float original_value)
 {
     if (original_value != 0.0f)
         return original_value *= -1.0f; 
+    else
+        return original_value;
 }
 
 int get_flipped_sign_int(int original_value)
 {
     if (original_value != 0)
-        return original_value *= -1; 
+        return original_value *= -1;
+    else
+        return original_value;
 }
 
 /*Modifies the value directly by calling the float and int return versions with itself 
