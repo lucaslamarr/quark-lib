@@ -1,0 +1,31 @@
+--LANGUAGE VERSIONS--
+ANSI C89 -pedantic (no extensions)
+
+--NAMING CONVENTIONS--
+file_names.c		
+non_constant_variable_names
+s_static_variable_names
+CONSTANT_VARIABLE_NAMES
+all_function_names()
+TypeNames
+
+--ADDITIONAL NOTES--
+1. Zero dependencies introduced (only what is part of the base language, no C standard library either).
+2. Pass parameters as pointers when incoming data is larger than 8 bytes.
+3. Single layer use of ternary operator assignment (anything nested should become if/else statements or switch).
+4. Header file comments state what it does, C file comments says how it works.
+5. Mark new header file sections like this...
+
+/*-------------------------
+---SECTION DECLARATIONS----
+-------------------------*/
+
+Mark new C file sections like this...
+
+/*-------------------------
+----SECTION DEFINITIONS----
+-------------------------*/
+
+This is easily searchable and identifiable.
+
+
