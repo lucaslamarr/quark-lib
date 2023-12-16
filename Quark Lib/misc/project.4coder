@@ -30,7 +30,7 @@ command_list = {
 		.save_dirty_files = true,
 		.cursor_at_end = false,
 		.cmd = {
-			{ "..\misc\build.bat", .os = "win" },
+			{ "build.bat", .os = "win" },
 		},
 	},
 	
@@ -41,7 +41,7 @@ command_list = {
 		.save_dirty_files = true,
 		.cursor_at_end = false,
 		.cmd = {
-			{ "..\misc\run.bat", .os = "win" },
+			{ "run.bat", .os = "win" },
 		},
 	},
 
@@ -52,7 +52,7 @@ command_list = {
 		.save_dirty_files = true,
 		.cursor_at_end = false,
 		.cmd = {
-			{ "..\misc\todo.bat", .os = "win" },
+			{ "todo.bat", .os = "win" },
 		},
 	},
 };

@@ -1,23 +1,10 @@
-/*THIS IS JUST FOR TESTING AND NOT PART OF THE QUARK LIBRARY!*/
-/*ONLY USE --QUARK.C AND QUARK.H-- IN YOUR PROJECTS.*/
+/* DO NOT INCLUDE! THIS IS JUST FOR TESTING AND NOT PART OF THE QUARK LIBRARY! */
 
 #include "quark.h"
 #include <stdio.h> 
 
-void run_demo()
+void run_core_demo()
 {
-    printf("-----------------------------------------\n");
-    printf("Booleans\n");
-    printf("-----------------------------------------\n\n");
-    {
-        Bool bool_test = { false };
-        
-        printf("Boolean Initialized To False: %d\n", bool_test.state);
-        
-        bool_test.state = true;
-        printf("Boolean Changed To True: %d\n\n", bool_test.state);
-    }
-    
     printf("-----------------------------------------\n");
     printf("Min and Max Values\n");
     printf("-----------------------------------------\n\n");
@@ -37,13 +24,6 @@ void run_demo()
         printf("Max Long Value %ld\n", get_max_long_value());
         printf("Min Long Value %ld\n", get_min_long_value());
         printf("Max Unsigned Long Value %lu\n\n", get_max_unsigned_long_value());
-        
-        /*NOTE: This codebase was compiled using C89 standards, while long long is supported through
-GCC extensions, I do not want to add code that will not run on the base GNU GCC compiler.
-
-        printf("Max Long Long Value %lld\n", get_max_long_long_value());
-        printf("Min Long Long Value %lld\n", get_min_long_long_value());
-        printf("Max Unsigned Long Long Value %llu\n\n", get_max_unsigned_long_long_value());*/
     }
     
     printf("-----------------------------------------\n");
@@ -71,9 +51,24 @@ GCC extensions, I do not want to add code that will not run on the base GNU GCC 
         printf("Vector3 Meeting Point All: %f, %f, %f\n\n", vector3_get_meeting_point_all(&vec3_test_a, &vec3_test_b).x, 
                vector3_get_meeting_point_all(&vec3_test_a, &vec3_test_b).y, 
                vector3_get_meeting_point_all(&vec3_test_a, &vec3_test_b).z);
+		
+		printf("-----------------------------------------\n");
+		printf("Booleans\n");
+		printf("-----------------------------------------\n\n");
+		{
+			bool bool_test = false;
+			
+			printf("Boolean Initialized To False: %c\n", bool_test);
+			
+			bool_test = true;
+			printf("Boolean Changed To True: %c\n\n", bool_test);
+		}
     }
-    
-    printf("-----------------------------------------\n");
+}
+
+void run_math_demo()
+{
+	printf("-----------------------------------------\n");
     printf("Absolute Value\n");
     printf("-----------------------------------------\n\n");
     {
@@ -134,13 +129,47 @@ GCC extensions, I do not want to add code that will not run on the base GNU GCC 
         
         printf("Floating Point Modulus 82.6 %% 12 = %f\n", get_mod_value_float(82.6, 12));
     }
-    
-    scanf_s(".");
+}
+
+void run_ds_demo()
+{
+	
+}
+
+void run_algo_demo()
+{
+	
+}
+
+void run_graphics_demo()
+{
+	Window window;
+	window.window_title = "Quark Lib Demo";
+	window.window_width = 1280;
+	window.window_height = 720;
+	
+	if (!create_window(window))
+		return;
+	
+	while (is_running)
+	{
+		window_update();
+	}
 }
 
 int main()
 {
-    run_demo();
-    return 0;
+	/*
+	run_ds_demo();
+run_algo_demo();
+*/
+	
+	run_core_demo(); 
+	run_math_demo();
+	run_graphics_demo();
+	
+	while (getchar() != '\n');
+	
+	return 0;
 }
 
