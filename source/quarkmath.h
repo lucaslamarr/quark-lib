@@ -2,7 +2,7 @@
 #define QUARKMATH_H
 
 /*-------------------------
- -----MATH DECLARATIONS-----
+ ---------GENERAL-----------
  -------------------------*/
 
 /*NOTE: Many of these return a value rather than directly modifying what is being passed in.

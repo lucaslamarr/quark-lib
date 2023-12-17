@@ -4,7 +4,7 @@
 /* TODO: Figure out what really belongs in Core. Or get rid of core all together. */
 
 /*-------------------------
- ----BOOLEAN DECLARATIONS---
+ -----------BOOLEAN---------
  -------------------------*/
 
 #ifndef _STDBOOL_H /* If stdbool.h is already included, skip this step */
@@ -16,7 +16,7 @@ typedef char bool;
 #endif
 
 /*-------------------------
- -TYPE LIMITS DECLARATIONS--
+ --------TYPE LIMITS--------
  -------------------------*/
 
 /* This section returns the maximum and minimum value of the specified data types. */
@@ -39,7 +39,7 @@ long int get_min_long_value();
 unsigned long int get_max_unsigned_long_value();
 
 /*-------------------------
- ---VECTOR 2 DECLARATIONS---
+ ----------VECTOR 2---------
  -------------------------*/
 
 typedef struct /* Holds positional data relative to an X and Y grid coordinate system. */
@@ -70,4 +70,20 @@ float vector3_get_meeting_point_y(Vector3*, Vector3*);
 float vector3_get_meeting_point_z(Vector3*, Vector3*);
 Vector3 vector3_get_meeting_point_all(Vector3*, Vector3*);
 
+/*-------------------------
+ ---------DEBUGGING---------
+ -------------------------*/
+
+typedef enum
+{
+	MESSAGE, 
+	WARNING,
+	ERR     /* ERROR keyword not allowed */
+} DebugMessageType;
+
+void debug_log(DebugMessageType, const char*);
+void debug_alert(DebugMessageType, const char*);
+
 #endif
+
+

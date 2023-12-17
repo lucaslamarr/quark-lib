@@ -5,10 +5,24 @@
 
 void run_core_demo()
 {
+	printf("-----------------------------------------\n");
+	printf("Booleans\n");
+	printf("-----------------------------------------\n\n");
+	
+	{
+		bool bool_test = false;
+		
+		printf("Boolean Initialized To False: %c\n", bool_test);
+		
+		bool_test = true;
+		printf("Boolean Changed To True: %c\n\n", bool_test);
+	}
+	
     printf("-----------------------------------------\n");
     printf("Min and Max Values\n");
     printf("-----------------------------------------\n\n");
-    {
+    
+	{
         printf("Max Char Value %d\n", get_max_char_value());
         printf("Min Char Value %d\n", get_min_char_value());
         printf("Max Unsigned Char Value %u\n\n", get_max_unsigned_char_value());
@@ -29,7 +43,8 @@ void run_core_demo()
     printf("-----------------------------------------\n");
     printf("Vectors\n");
     printf("-----------------------------------------\n\n");
-    {
+    
+	{
         Vector2 vec2_test_a = {1, 2};
         Vector2 vec2_test_b = {8, 9};
         Vector3 vec3_test_a = {1, 2, 3};
@@ -53,17 +68,21 @@ void run_core_demo()
                vector3_get_meeting_point_all(&vec3_test_a, &vec3_test_b).z);
 		
 		printf("-----------------------------------------\n");
-		printf("Booleans\n");
+		printf("DEBUGGING\n");
 		printf("-----------------------------------------\n\n");
+		
 		{
-			bool bool_test = false;
+			debug_log(MESSAGE,   "Test Log - Message"  );
+			debug_log(WARNING,   "Test Log - Warning"  );
+			debug_log(ERR,       "Test Log - Error"    );
 			
-			printf("Boolean Initialized To False: %c\n", bool_test);
+			debug_alert(MESSAGE, "3 more alerts will appear demonstrating the alert box logging feature.");
 			
-			bool_test = true;
-			printf("Boolean Changed To True: %c\n\n", bool_test);
+			debug_alert(MESSAGE, "Test Alert - Message");
+			debug_alert(WARNING, "Test Alert - Warning");
+			debug_alert(ERR,     "Test Alert - Error");
 		}
-    }
+	}
 }
 
 void run_math_demo()
@@ -151,7 +170,9 @@ void run_graphics_demo()
 	if (!create_window(window))
 		return;
 	
-	while (is_running)
+	/* You use your own boolean to check if the program is running here. This acts as a placeholder for the demo program. In the "LRESULT CALLBACK window_callback" you can set your boolean to false right before DestroyWindow() is called and destroys the "HWND window_handle" variable. */
+	
+	while (window_handle != NULL)
 	{
 		window_update();
 	}
@@ -159,14 +180,14 @@ void run_graphics_demo()
 
 int main()
 {
+	run_core_demo(); 
+	
 	/*
+run_math_demo();
+	run_graphics_demo();
 	run_ds_demo();
 run_algo_demo();
 */
-	
-	run_core_demo(); 
-	run_math_demo();
-	run_graphics_demo();
 	
 	while (getchar() != '\n');
 	
