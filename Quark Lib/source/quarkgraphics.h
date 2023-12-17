@@ -25,7 +25,7 @@ typedef struct
 /* TODO: MacOS */
 /* TODO: Linux */
 
-HWND window_handle;
+extern HWND window_handle;
 
 #endif
 

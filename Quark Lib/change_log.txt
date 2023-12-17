@@ -52,3 +52,9 @@ December 15, 2023
 	Wrapped generalized window creation and update functions in #ifdef statements in order to create cross platform implementations.
 	Added an additional #ifndef that checks for stdbool.h before utilizing Quark's own bool solution.
 	Replaced the original scanf_s() function with getchar() in order to wait for user input to close the console.
+
+December 16, 2023
+	Changed quarkgraphics.c to no longer track a static "is_running" boolean for the main loop. 
+	Changed the demo program to now update by checking if the HWND window_handle is not null. 
+	Adding console logging system that allows for displaying messages, warning, and errors.
+	Added alert box system for Windows that shows the same log messages in the form of a graphical alert box.

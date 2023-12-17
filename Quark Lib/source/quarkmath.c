@@ -1,7 +1,7 @@
 #include "quarkmath.h"
 
 /*-------------------------
- -----MATH DEFINITIONS------
+ ---------GENERAL-----------
  -------------------------*/
 
 /*Gets the value without sign information. This is done by multiplying by -1 and if the original 

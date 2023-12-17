@@ -2,13 +2,13 @@
 
 /* NOTE: Modify these functions to meet the needs of your project */
 
-bool is_running = true;
-
 /*-------------------------
  ------WINDOW CREATION------
  -------------------------*/
 
 #ifdef _WIN32
+
+HWND window_handle;
 
 /* NOTE: Naming conventions match Microsoft's documentation and differs from the rest of the library */
 LRESULT CALLBACK window_callback(HWND window, UINT msg, WPARAM wParam, LPARAM lParam)
@@ -19,8 +19,8 @@ LRESULT CALLBACK window_callback(HWND window, UINT msg, WPARAM wParam, LPARAM lP
 	{
 		case WM_CLOSE:
 		{
-			is_running = false;
-			DestroyWindow(window_handle);
+			/* NOTE: Add your own boolean that tracks if the program is running and set it to false here */
+			DestroyWindow(window_handle); 
 			break;
 		}
 		case WM_DESTROY:
@@ -92,4 +92,4 @@ void window_update()
 
 #endif
 
-/* #ifdef APPLE and LINUX */
+/* TODO: #ifdef APPLE and LINUX implementations */

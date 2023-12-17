@@ -1,8 +1,10 @@
 #include "quarkcore.h"
 #include "quarkmath.h"
+#include <stdio.h>
+#include <Windows.h>
 
 /*-------------------------
- --TYPE LIMITS DEFINITIONS--
+ --------TYPE LIMITS--------
  -------------------------*/
 
 /* NOTE: Using a short for chars so that I return a small number and not a symbol. */
@@ -27,7 +29,7 @@ unsigned long get_max_unsigned_long_value()           { return 4294967295UL;    
 /* NOTE: All values checked alongside the C99 Limits.h macros.*/
 
 /*-------------------------
- ---VECTOR 2 DEFINITIONS----
+ ----------VECTOR 2---------
  -------------------------*/
 
 float vector2_get_meeting_point_x(Vector2 vector_a, Vector2 vector_b)
@@ -98,4 +100,57 @@ Vector3 vector3_get_meeting_point_all(Vector3 *vector_a, Vector3 *vector_b)
     return returned_vector3;
 }
 
+/*-------------------------
+ ---------DEBUGGING---------
+ -------------------------*/
+
+/* For library development only and not exposed to the user */
+const char* get_debug_message_type(DebugMessageType message_type)
+{
+	switch(message_type)
+	{
+		case MESSAGE:
+		{
+			return "Message";
+			break;
+		}
+		case WARNING:
+		{
+			return "Warning";
+			break;
+		}
+		case ERR:
+		{
+			return "Error";
+			break;
+		}
+		default:
+		{
+			return "Message";
+		}
+	}
+}
+
+void debug_log(DebugMessageType message_type, const char* message)
+{
+	printf("%s: %s\n", get_debug_message_type(message_type), message);
+}
+
+void debug_alert(DebugMessageType message_type, const char* message)
+{
+#ifdef _WIN32
+	UINT icon_type;
+	
+	if (message_type == MESSAGE)
+		icon_type = MB_ICONINFORMATION;
+	else if (message_type == WARNING)
+		icon_type = MB_ICONWARNING;
+	else
+		icon_type = MB_ICONERROR;
+	
+	MessageBox(NULL, message, get_debug_message_type(message_type), icon_type | MB_OK);
+#endif
+	
+	/* TODO: MacOS and Linux */
+}
 
