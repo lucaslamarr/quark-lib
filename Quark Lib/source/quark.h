@@ -4,10 +4,8 @@
 #include "quarkcore.h"
 #include "quarkmath.h"
 #include "quarkgraphics.h"
+#include "quarkalgo.h"
 
-/*
- #include "quarkds.h"
- #include "quarkalgo.h"
-*/
+/* #include "quarkds.h" */
 
 #endif

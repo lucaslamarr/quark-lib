@@ -7,6 +7,8 @@
  -----------BOOLEAN---------
  -------------------------*/
 
+/* Custom implementation of the boolean type that is absent from C89 */
+
 #ifndef _STDBOOL_H /* If stdbool.h is already included, skip this step */
 #ifndef bool /* Won't override pre existing bool solution made by the user. */
 typedef char bool;
@@ -37,6 +39,12 @@ unsigned int get_max_unsigned_int_value();
 long int get_max_long_value();
 long int get_min_long_value();
 unsigned long int get_max_unsigned_long_value();
+
+float get_max_float_value();
+float get_min_float_value();
+
+double get_max_double_value();
+double get_min_double_value();
 
 /*-------------------------
  ----------VECTOR 2---------
@@ -74,6 +82,7 @@ Vector3 vector3_get_meeting_point_all(Vector3*, Vector3*);
  ---------DEBUGGING---------
  -------------------------*/
 
+/* Choose between three types of messages that will be used for showing severity in debug messages. */
 typedef enum
 {
 	MESSAGE, 
@@ -81,6 +90,7 @@ typedef enum
 	ERR     /* ERROR keyword not allowed */
 } DebugMessageType;
 
+/* Option to either log a message to the console or show a graphical popup. */
 void debug_log(DebugMessageType, const char*);
 void debug_alert(DebugMessageType, const char*);
 
