@@ -9,6 +9,7 @@ bool is_running;
  ------WINDOW CREATION------
  -------------------------*/
 
+/* This is the information that the user will get to specify when creating a window. */
 typedef struct 
 {
 	const char* window_title;
@@ -25,10 +26,12 @@ typedef struct
 /* TODO: MacOS */
 /* TODO: Linux */
 
+/* This window handle is what will be checked for to determine if the window is still active or not when updating. */
 extern HWND window_handle;
 
 #endif
 
+/* Create the window first and provide the required information, then run the window_update inside of a game loop. */
 bool create_window(Window window);
 void window_update();
 

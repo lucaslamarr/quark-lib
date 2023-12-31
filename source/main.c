@@ -3,6 +3,12 @@
 #include "quark.h"
 #include <stdio.h> 
 
+/* MacOS and Linux Screen Clearing */
+
+#ifdef _WIN32
+    #include <stdlib.h>
+#endif
+
 void run_core_demo()
 {
 	printf("-----------------------------------------\n");
@@ -157,7 +163,168 @@ void run_ds_demo()
 
 void run_algo_demo()
 {
+	int i;
 	
+	{
+		int bubble_array_int[5] = {2, 6, 4, 7, 9};
+		float bubble_array_float[5] = {2.0f, 6.0f, 4.0f, 7.0f, 9.0f};
+		
+		printf("\n---INT BUBBLE SORT BEFORE---\n\n");
+		
+		for (i = 0; i < (int)sizeof(bubble_array_int) / (int)sizeof(bubble_array_int[0]); i++)
+			printf("Element: %d = %d\n", i, bubble_array_int[i]);
+		i = 0;
+		
+		printf("\n---INT BUBBLE SORT AFTER---\n\n");
+		
+		bubble_sort_int(bubble_array_int, 5);
+		
+		for (i = 0; i < (int)sizeof(bubble_array_int) / (int)sizeof(bubble_array_int[0]); i++)
+			printf("Element: %d = %d\n", i, bubble_array_int[i]);
+		i = 0;
+		
+		printf("\n---FLOAT BUBBLE SORT BEFORE---\n\n");
+		
+		for (i = 0; i < (int)sizeof(bubble_array_float) / (int)sizeof(bubble_array_float[0]); i++)
+			printf("Element: %d = %f\n", i, bubble_array_float[i]);
+		i = 0;
+		
+		printf("\n---FLOAT BUBBLE SORT AFTER---\n\n");
+		
+		bubble_sort_float(bubble_array_float, 5);
+		
+		for (i = 0; i < (int)sizeof(bubble_array_float) / (int)sizeof(bubble_array_float[0]); i++)
+			printf("Element: %d = %f\n", i, bubble_array_float[i]);
+		i = 0;
+	}
+	
+	{
+		int selection_array_int[5] = {34, 2, 62, 27, 91};
+		float selection_array_float[5] = {23.0f, 66.0f, 41.0f, 17.0f, 39.0f};
+		
+		printf("\n\n\n\n---INT SELECTION SORT BEFORE---\n\n");
+		
+		for (i = 0; i < (int)sizeof(selection_array_int) / (int)sizeof(selection_array_int[0]); i++)
+			printf("Element: %d = %d\n", i, selection_array_int[i]);
+		i = 0;
+		
+		printf("\n---INT SELECTION SORT AFTER---\n\n");
+		
+		selection_sort_int(selection_array_int, 5);
+		
+		for (i = 0; i < (int)sizeof(selection_array_int) / (int)sizeof(selection_array_int[0]); i++)
+			printf("Element: %d = %d\n", i, selection_array_int[i]);
+		i = 0;
+		
+		printf("\n---FLOAT SELECTION SORT BEFORE---\n\n");
+		
+		for (i = 0; i < (int)sizeof(selection_array_float) / (int)sizeof(selection_array_float[0]); i++)
+			printf("Element: %d = %f\n", i, selection_array_float[i]);
+		i = 0;
+		
+		printf("\n---FLOAT SELECTION SORT AFTER---\n\n");
+		
+		selection_sort_float(selection_array_float, 5);
+		
+		for (i = 0; i < (int)sizeof(selection_array_float) / (int)sizeof(selection_array_float[0]); i++)
+			printf("Element: %d = %f\n", i, selection_array_float[i]);
+		i = 0;
+	}
+	
+	{
+		int insertion_array_int[5] = {92, 16, 34, 57, 59};
+		float insertion_array_float[5] = {2.0f, 96.0f, 54.0f, 47.0f, 99.0f};
+		
+		printf("\n\n\n\n---INT INSERTION SORT BEFORE---\n\n");
+		
+		for (i = 0; i < (int)sizeof(insertion_array_int) / (int)sizeof(insertion_array_int[0]); i++)
+			printf("Element: %d = %d\n", i, insertion_array_int[i]);
+		i = 0;
+		
+		printf("\n---INT INSERTION SORT AFTER---\n\n");
+		
+		insertion_sort_int(insertion_array_int, 5);
+		
+		for (i = 0; i < (int)sizeof(insertion_array_int) / (int)sizeof(insertion_array_int[0]); i++)
+			printf("Element: %d = %d\n", i, insertion_array_int[i]);
+		i = 0;
+		
+		printf("\n---FLOAT INSERTION SORT BEFORE---\n\n");
+		
+		for (i = 0; i < (int)sizeof(insertion_array_float) / (int)sizeof(insertion_array_float[0]); i++)
+			printf("Element: %d = %f\n", i, insertion_array_float[i]);
+		i = 0;
+		
+		printf("\n---FLOAT INSERTION SORT AFTER---\n\n");
+		
+		insertion_sort_float(insertion_array_float, 5);
+		
+		for (i = 0; i < (int)sizeof(insertion_array_float) / (int)sizeof(insertion_array_float[0]); i++)
+			printf("Element: %d = %f\n", i, insertion_array_float[i]);
+		i = 0;
+	}
+	
+	{
+		int index;
+		
+		int linear_search_array_int[5] = {2, 6, 4, 3, 9};
+		float linear_search_array_float[5] = {2.0f, 6.0f, 4.0f, 3.0f, 9.0f};
+		
+		printf("\n\n\n\n---INT LINEAR SEARCH ARRAY---\n\n");
+		
+		for (i = 0; i < (int)sizeof(linear_search_array_int) / (int)sizeof(linear_search_array_int[0]); i++)
+			printf("Element: %d = %d\n", i, linear_search_array_int[i]);
+		i = 0;
+		
+		printf("\n---INT LINEAR SEARCH RESULT---\n\n");
+		
+		index = linear_search_int(linear_search_array_int, 5, 3);
+		
+		printf("Found at index %d\n", index);
+		
+		printf("\n---FLOAT LINEAR SEARCH ARRAY---\n\n");
+		
+		for (i = 0; i < (int)sizeof(linear_search_array_float) / (int)sizeof(linear_search_array_float[0]); i++)
+			printf("Element: %d = %f\n", i, linear_search_array_float[i]);
+		i = 0;
+		
+		printf("\n---FLOAT LINEAR SEARCH RESULT---\n\n");
+		
+		index = linear_search_float(linear_search_array_float, 5, 3.0f);
+		
+		printf("Found at index %d", index);
+	}
+	
+	{
+		int index;
+		
+		int binary_search_array_int[5] = {22, 3, 34, 13, 9};
+		float binary_search_array_float[5] = {32.0f, 3.0f, 84.0f, 13.0f, 9.0f};
+		
+		printf("\n\n\n\n---INT BINARY SEARCH ARRAY---\n\n");
+		
+		for (i = 0; i < (int)sizeof(binary_search_array_int) / (int)sizeof(binary_search_array_int[0]); i++)
+			printf("Element: %d = %d\n", i, binary_search_array_int[i]);
+		i = 0;
+		
+		printf("\n---INT BINARY SEARCH RESULT---\n\n");
+		
+		index = binary_search_int(binary_search_array_int, 5, 3);
+		
+		printf("Found at index %d\n", index);
+		
+		printf("\n---FLOAT BINARY SEARCH ARRAY---\n\n");
+		
+		for (i = 0; i < (int)sizeof(binary_search_array_float) / (int)sizeof(binary_search_array_float[0]); i++)
+			printf("Element: %d = %f\n", i, binary_search_array_float[i]);
+		i = 0;
+		
+		printf("\n---FLOAT BINARY SEARCH RESULT---\n\n");
+		
+		index = binary_search_float(binary_search_array_float, 5, 3.0f);
+		
+		printf("Found at index %d\n", index);
+	}
 }
 
 void run_graphics_demo()
@@ -172,25 +339,120 @@ void run_graphics_demo()
 	
 	/* You use your own boolean to check if the program is running here. This acts as a placeholder for the demo program. In the "LRESULT CALLBACK window_callback" you can set your boolean to false right before DestroyWindow() is called and destroys the "HWND window_handle" variable. */
 	
-	while (window_handle != NULL)
+	while (window_handle)
 	{
 		window_update();
 	}
+	
+	printf("Window destroyed!\n");
 }
 
 int main()
 {
-	run_core_demo(); 
+	bool running = true;
+	int choice;
 	
-	/*
-run_math_demo();
-	run_graphics_demo();
-	run_ds_demo();
-run_algo_demo();
-*/
-	
-	while (getchar() != '\n');
-	
+	while (running)
+	{
+		printf("Welcome to the Quark Library Demo Program\n\n");
+		
+		printf("1. Core\n");
+		printf("2. Math\n");
+		printf("3. Algorithms\n");
+		printf("4. Data Structures\n");
+		printf("5. Graphics\n\n");
+		
+		while (1)
+		{
+			printf("Choice: ");
+			fflush(stdin);
+			choice = getchar();
+			
+			switch (choice)
+			{			
+				case '1':
+				{
+					system("cls");
+					run_core_demo();
+					break;
+				}
+				case '2':
+				{
+					system("cls");
+					run_math_demo();
+					break;
+				}
+				case '3':
+				{
+					system("cls");
+					run_algo_demo();
+					break;
+				}
+				case '4':
+				{
+					system("cls");
+					run_ds_demo();
+					break;
+				}
+				case '5':
+				{
+					system("cls");
+					run_graphics_demo();
+					break;
+				}
+				default:
+				{
+					printf("\nINVALID RESPONSE\n\n");
+					continue;
+				}
+				
+				break;
+			} 
+			
+			break;
+		}
+		
+		printf("\n-----------------------------------------\n");
+		printf("-----------------------------------------\n\n");
+		printf("Run another demo?\n\n");
+		
+		printf("1: Yes\n");
+		printf("2: No\n\n");
+		
+		while (1)
+		{
+			printf("Choice: ");
+			fflush(stdin);
+			choice = getchar();
+			
+			switch(choice)
+			{			
+				case '1':
+				{
+					system("cls");
+					break;
+				}
+				case '2':
+				{
+					system("cls");
+					running = false;
+					return 0;
+				}
+				default:
+				{
+					printf("\nINVALID RESPONSE\n\n");
+					continue;
+				}
+				
+				break;
+			}
+			
+			break;
+		}
+		
+		system("cls");
+	} 
+		
 	return 0;
 }
 

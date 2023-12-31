@@ -10,21 +10,32 @@
 /* NOTE: Using a short for chars so that I return a small number and not a symbol. */
 /* NOTE: MSVC will sometimes throw an error for writing the actual min value, applying -1 seems to be a workaround. */
 
-char get_max_char_value()                             { return 127;      }
-char get_min_char_value()                             { return -127 - 1; } 
-unsigned char get_max_unsigned_char_value()           { return 255;      }
+char get_max_char_value()                             { return 127;             }
+char get_min_char_value()                             { return -128;            } 
+unsigned char get_max_unsigned_char_value()           { return 255;             }
 
-short get_max_short_value()                           { return 32767;      }
-short get_min_short_value()                           { return -32767 - 1; } 
-unsigned short get_max_unsigned_short_value()         { return 65535;      }
+short get_max_short_value()                           { return 32767;           }
+short get_min_short_value()                           { return -32768;          } 
+unsigned short get_max_unsigned_short_value()         { return 65535;           }
 
 int get_max_int_value()                               { return 2147483647;      }
 int get_min_int_value()                               { return -2147483647 - 1; } 
 unsigned int get_max_unsigned_int_value()             { return 4294967295U;     }
 
+/* limits.h on the GCC compiler reports these values to be the same as an int */
 long get_max_long_value()                             { return 2147483647;      }
 long get_min_long_value()                             { return -2147483647 - 1; } 
 unsigned long get_max_unsigned_long_value()           { return 4294967295UL;    }
+
+float get_max_float_value()                           { return 340282346638528859811704183484516925440.000000f; }
+float get_min_float_value()                           { return 0.000000f;                                       }
+
+/* 
+The value reported using limits.h exceeds the level of precision that of the GCC compiler that I am using. Use at your own risk.
+double get_max_double_value()                         { return 179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000000f;            }
+*/
+
+double get_min_double_value()                         { return 0.000000f; }
 
 /* NOTE: All values checked alongside the C99 Limits.h macros.*/
 
@@ -104,7 +115,7 @@ Vector3 vector3_get_meeting_point_all(Vector3 *vector_a, Vector3 *vector_b)
  ---------DEBUGGING---------
  -------------------------*/
 
-/* For library development only and not exposed to the user */
+/* For library development only and not exposed to the user. Returns the text displayed for the message type. */
 const char* get_debug_message_type(DebugMessageType message_type)
 {
 	switch(message_type)
@@ -131,15 +142,17 @@ const char* get_debug_message_type(DebugMessageType message_type)
 	}
 }
 
+/* Displays a message in the console with a message type, followed by the message itself. */
 void debug_log(DebugMessageType message_type, const char* message)
 {
 	printf("%s: %s\n", get_debug_message_type(message_type), message);
 }
 
+/* Displays a graphical popup showing the message type, followed by the message. Native implementation for each OS. */
 void debug_alert(DebugMessageType message_type, const char* message)
 {
 #ifdef _WIN32
-	UINT icon_type;
+	UINT icon_type; /* The icon that will show in the alert box */
 	
 	if (message_type == MESSAGE)
 		icon_type = MB_ICONINFORMATION;
