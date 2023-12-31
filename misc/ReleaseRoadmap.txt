@@ -1,0 +1,48 @@
+-------------------
+|  Quark Lib 1.0  |
+-------------------
+	[X]Math Library
+	[X]Vector 2 
+	[X]Vector 3
+	[X]Boolean
+	[X]Min and Max
+
+	[-]Algorithms
+		[X]Bubble Sort
+		[-]Insertion Sort  NEEDS COMMENTS
+		[-]Binary Search   NEEDS COMMENTS
+		[-]Linear Search   NEEDS COMMENTS + PUSH
+
+	[ ]Data Structures
+		[ ]Stack
+		[ ]Queue
+		[ ]Linked List
+		[ ]Dynamic Array
+
+	[X]Windows Logging
+	[X]Windows Window Creation
+	[X]Create a Menu For Demo Program
+	[ ]Testing and Review + Check Conventions
+
+-------------------
+|  Quark Lib 1.x  |
+-------------------
+
+	[ ]Smart Memory Allocation    
+       
+	[ ]MacOS Logging
+	[ ]Linux Logging
+
+	[ ]MacOS Window Creation						 
+	[ ]Linux Window Creation
+					  
+-------------------
+|  Quark Lib 2.0  |
+-------------------
+
+	[ ]Windows Graphics Library                         
+	[ ]MacOS Graphics Library 						
+	[ ]Linux Graphics Library   
+
+	[ ]Texture Hot Reload              
+	[ ]Audio Hot Reload                           
