@@ -64,3 +64,13 @@ December 16, 2023
 
 December 23, 2023
 	Added a real demo program menu so that the user can select which modules to run.
+
+February 10, 2024
+	Removed quarkds, quarkalgo, and quarkgraphics modules. 
+	Changed back to a single file.
+	Comment adjustments.
+
+February 12, 2024
+	Added max and min values for long long and unsigned long long.
+	Removed demo program.
+	Started documentation.

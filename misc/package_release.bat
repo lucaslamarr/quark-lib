@@ -1,5 +1,9 @@
 @echo off
 
+REM Synchronously run build.bat to build the project first and wait to run the rest of the script.
+
+call build.bat
+
 REM Set the name of the folder where your release build / package will be stored.
 
 set "release_package_dir=release_package"
@@ -20,10 +24,9 @@ REM Start copying individual files or entire directories as needed.
 
 xcopy source\* %release_package_dir%\source\ /e
 xcopy change_log.txt %release_package_dir% 
-xcopy quark-lib-demo.exe %release_package_dir% 
 
 REM Delete anything that should not be included in the release package.
 
 cd %release_package_dir%
-
-rmdir /s /q "source\unstable" 
+ 
+del main.c
