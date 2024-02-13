@@ -1,15 +1,15 @@
 # A small C89 (ANSI) library with no dependencies.
-Everything is compiled with ```-Wall -Wextra -ansi -pedantic``` for strict adherance to the C89 standard and is contained in one ```.h``` and ```.c``` file.
+Everything is compiled with ```-Wall -Wextra -ansi -pedantic``` for strict adherence to the C89 standard and is contained in one ```.h``` and ```.c``` file.
 
 # Overview
 
-I started working on Quark with the intention of recreating some of the functions that I frequently use from the C standard library. Rather than including full header files just for a few functions, I decided to try and remake these functions on my own. As a result, Quark includes a few features that are found in the C89 standard library, along with some of my own features that I felt would be useful. 
+I started working on Quark to recreate some of the functions that I frequently use from the C standard library. Rather than including full header files just for a few functions, I decided to try and remake these functions on my own. As a result, Quark includes a few features that are found in the C89 standard library, along with some of my own features that I felt would be useful. 
 
-This is by no means meant to be a replacement for any part of the standard library or a claim to being any faster or more efficient. I just wanted to remake these functions for myself and put them all into one single file that I can use in my own projects. It is just a small hobby project that I hope to continue improving and expanding upon as I spend more time programming in C89.
+This is by no means meant to be a replacement for any part of the standard library or a claim to being any faster or more efficient. I just wanted to remake these functions for myself and put them all into one single file that I can use in my projects. It is just a small hobby project that I hope to continue improving and expanding upon as I spend more time programming in C89.
 
 # quark.h
 
-Quark is built with C89, which was before the ```bool``` type had been added to the language. If you are using a later version or have your own custom implementation of the ```bool``` type, this will be skipped over. This implementation uses a ```char``` as the smallest available data type to represent the ```bool``` and also uses the familiar ```true``` and ```false``` keywords, which expand to the 0 or 1 characters.
+Quark is built with C89, which was before the ```bool``` type had been added to the language. If you are using a later version and have already ```#include <stdbool.h>``` or have your own custom implementation of the ```bool``` type, this will be skipped over. This implementation uses a ```char``` as the smallest available data type to represent the ```bool``` and also uses the familiar ```true``` and ```false``` keywords, which expand to the 0 or 1 characters.
 
 ```
 #ifndef _STDBOOL_H         
@@ -21,7 +21,7 @@ Quark is built with C89, which was before the ```bool``` type had been added to 
 #endif
 ```
 
-There is also a reimplementation of the ```limits.h``` file that contained minimum and maximum values for different data types. Type limits for ```char```, ```short```, ```int```, ```long```, and ```float``` are included in Quark and are represented with functions for each of them. 
+There is also a reimplementation of the ```limits.h``` file that contains minimum and maximum values for different data types. Type limits for ```char```, ```short```, ```int```, ```long```, and ```float``` are included in Quark and are represented with functions for each of them. 
 
 ```
 char get_max_char_value();
@@ -44,7 +44,7 @@ float get_max_float_value();
 float get_min_float_value();
 ```
 
-Structs for ```Vector2``` and ```Vector3``` are included and default to the ```float``` data type for the x, y, and z values. These can be casted down to an ```int``` value if desired. Commonly used in games to represent coordinates, or for things like color values when trying to represent RGB values.
+Structs for ```Vector2``` and ```Vector3``` are included and default to the ```float``` data type for the x, y, and z values. These can be cast down to an ```int``` value if desired. Commonly used in games to represent coordinates, or for things like color when trying to represent RGB values.
 
 ```
 typedef struct 
@@ -79,7 +79,7 @@ A variety of mathematical functions are also included for ```float``` and ```int
 - Get the absolute value of a number.
 - Get the raised power value of a number.
 - Get the remainder (mod) value of a ```float```.
-- Get the the flipped sign version of a number.
+- Get the flipped sign version of a number.
 - Rounding for ```float``` values.
 
 ```
