@@ -1,32 +1,102 @@
-# Quark Lib - A small ANSI C (89) library with no external dependencies
+# Quark Lib - A small ANSI C (89) library with no dependencies.
+Everything is compiled with ```-Wall -Wextra -ansi -pedantic``` for strict adherance to the C89 standard. Everything is contained in one header and c file.
 
-I started working on Quark Lib with the intention of creating a micro sized library that would run just about anywhere, and without the need for any dependencies. 
+I started working on Quark with the intention of recreating some of the functions that I frequently use from the C standard library. Rather than including full header files just for a few functions, I decided to try and remake these functions on my own. As a result, Quark includes a few features that are found in the C89 standard library, along with some of my own functions that I felt would be useful.
 
-Initially, there were zero additional include files that were not written by me, however, a handful of C Standard Library files are now included to
-help support custom data structures, algorithms, and smart memory management features that are planned for the future. The only additional included files
-are those that are required to communicate directly with the target platform. This allows for the addition of things like window creation and a small graphics library that will have native code written for Windows, MacOS, and Linux without the use of some third party cross platform library.
+This is by no means meant to be a replacement for any part of the standard library or a claim to being any faster or more efficient. I just wanted to remake these functions for myself and put them all into one single file that I can use in my own projects.
 
-Written to standard for ANSI C (89) and was tested using GNU GCC with extensions disabled.
+# quark.h
 
------------------------------------------------------------------------------------------------------------------------------------------------------------
- 
-  quark.h - Includes all of the modules / files in the library.
+Quark is built with C89 before the ```bool``` type existed. If you are using a later version of the language or have your own custom implementation of the ```bool``` type, this will be skipped over. This implementation uses a ```char``` as the smallest available data type to represent the ```bool``` and also uses the familiar ```true``` and ```false``` keywords, which expand to the 0 or 1 character.
 
-  quarkcore.h - General use features, such as min and max values of data types, custom bool implementation, Vector 2 and 3, and more.
+```
+#ifndef _STDBOOL_H         
+    #ifndef bool           
+        typedef char bool; 
+        #define true  '1'   
+        #define false '0'
+    #endif
+#endif
+```
 
-  quarkmath.h - A variety of common math functions such as square root, absolute value, rounding, and more.
+There is also a reimplementation of the ```limits.h``` file that contained minimum and maximum values for different data types. Type limits for ```char```, ```short```, ```int```, ```long```, and ```float``` are included in Quark and are represented with functions for each of them like these.
 
-  quarkgraphics.h - Cross platform (Windows, Linux, MacOS) and simplified window creation and rendering.
+```
+char get_max_char_value();
+char get_min_char_value();
+unsigned char get_max_unsigned_char_value();
 
-  quarkds.h (COMING SOON) - A handful of useful data structures such as a stack, queue, linked list, and more.
+short get_max_short_value();
+short get_min_short_value();
+unsigned short get_max_unsigned_short_value();
 
-  quarkalgo.h (COMING SOON) - Common algorithms for sorting and searching.
+int get_max_int_value();
+int get_min_int_value();
+unsigned int get_max_unsigned_int_value();
 
------------------------------------------------------------------------------------------------------------------------------------------------------------
+long int get_max_long_value();
+long int get_min_long_value();
+unsigned long int get_max_unsigned_long_value();
 
-This is not meant to be a replacement library for anything in the C standard library, however, I have recreated some of the functions that I utilize the most in my own vision, as well as a few brand new features. This library is not meant to be any faster or more efficient than what you might find in any of the official C library files. It is just a way for me to consolidate a lot of my favorite functions in a central place where I can design them in a way that makes sense to me. Additionally, I wanted to create my own implementations for things like window creation or 2D graphics that will run natively on different platforms without using third party libraries.
+float get_max_float_value();
+float get_min_float_value();
+```
 
-This repository contains the project file that I used for the library's development and does not require anything to start using it. Just take these header and C source files and put them somewhere inside of your own project directory that will allow you to #include them. The main.c file is just for testing and running the demo program that shows each function running and displaying their results. It is not part of the actual Quark library files and should not be added to your own project.
+Structs for ```Vector2``` and ```Vector3``` are included and default to the ```float``` data type for the x, y, and z values. These can be casted down to an ```int``` value if desired.
 
-This code will compile inside of Visual Studio using their own C and C++ compiler, however, if you want to modify and build the project using the build.bat file that comes with the project you will need to install GNU GCC. Make sure that the project
-structure remains the same by leaving the source and misc folder next to each other. If you are going to modify the file structure then you will also need to adjust the search path within the build.bat and run.bat files in order for them to run correctly.
+```
+typedef struct 
+{
+    float x;
+    float y;
+} Vector2; 
+
+typedef struct
+{
+    float x;
+    float y;
+    float z;
+} Vector3; 
+```
+
+The ```Vector2``` and ```Vector``` structs also have a few functions that allow you to get the meeting point of each axis.
+
+```
+float vector2_get_meeting_point_x(Vector2, Vector2); 
+float vector2_get_meeting_point_y(Vector2, Vector2);
+Vector2 vector2_get_meeting_point_all(Vector2, Vector2);
+
+float vector3_get_meeting_point_x(Vector3*, Vector3*); 
+float vector3_get_meeting_point_y(Vector3*, Vector3*);
+float vector3_get_meeting_point_z(Vector3*, Vector3*);
+Vector3 vector3_get_meeting_point_all(Vector3*, Vector3*);
+```
+
+A variety of mathematical functions are also included for ```float``` or ```int``` types.
+
+- Get the absolute value of a number.
+- Get the raised power value of a number.
+- Get the remainder (mod) value of a ```float```.
+- Get the the flipped sign version of a number.
+- ```float``` rounding.
+
+```
+float get_absolute_value_float(float); 
+int get_absolute_value_int(int); 
+
+float get_raised_power_value_float(float, int); 
+int get_raised_power_value_int(int, int); 
+
+float get_mod_value_float(float, float); 
+
+float get_flipped_sign_float(float); 
+int get_flipped_sign_int(int); 
+
+void round_float(float*);      /* Anything 0.5 and above will be rounded to the next whole number, anything lower is truncated. */
+void round_float_up(float*);   /* Increases the value to the next whole number. */
+void round_float_down(float*); /* Truncates the decimal place. */
+```
+
+
+
+
