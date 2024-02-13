@@ -1,0 +1,76 @@
+August 22, 2023
+	Added Vector2 structure that holds floating point numbers
+	Created functions for getting the center positions in between two vector2's
+	Replaced previous Math.h usage of fabs() with custom function for getting absolute values
+	Created a sign flipping function
+	Initial comments
+	Listed out code standards and conventions
+
+August 23, 2023
+	Updated 4coder project bindings to support build.bat hotkey
+	Implemented a macro to toggle between demo mode and packaging mode
+	Added new get_raised_power_value_float() function
+	Added new get_modulus_value_float() function that is currently broken and needs work
+	Added functions for rounding, as well as force rounding up or down. Needs modulus function to work
+
+August 30, 2023
+	Created todo.bat file that will print out the file name, line number, and contents of all //TODO: comments
+	Re-implementation of the limits.h header file contents for integer values. Floating point numbers coming later
+	Added Vector3 implementations of the previous Vector2 functions
+
+August 31, 2023
+	Absolute value function for ints
+	Functions that return the larger or smaller value of floats / ints
+	Functions that returns the value difference between floats / ints
+
+September 02, 2023
+	Added absolute value functions for integers
+	Added get functions for absolute values
+	1 byte boolean implementation via a struct containing a char
+	#defines for true = 1 and false = 0
+	Started writing demo program
+
+September 03, 2023
+	Added solution for MSVC errors requiring a different format when getting the min value of data types
+	Finished rounding function
+	Finished float modulus function
+	Updated comments and codebase structure
+	Switched compiler to c89 mode and modified code to meet standards
+	Enabled -pedantic mode to catch any errors that were avoided through extensions
+	Finished demo program
+
+December 08, 2023
+	Included the C standard library for a new and in progress "Data Structures" module.
+	Separated project into separate files based on their functionality. All of them are included in a single "quark.h" file as well as individual files.
+	Change bool solution to use a char instead of an int.
+	Blocked Quark's own bool solution behind an #ifndef that checks for the user's own implementation of the "bool" keyword.
+	Started adding the "Stack" data structure.
+	Additional minor formatting changes.
+
+December 15, 2023
+	Included Windows.h in order to add window creation to a new and in progress "Quark Graphics" module.
+	Wrapped generalized window creation and update functions in #ifdef statements in order to create cross platform implementations.
+	Added an additional #ifndef that checks for stdbool.h before utilizing Quark's own bool solution.
+	Replaced the original scanf_s() function with getchar() in order to wait for user input to close the console.
+
+December 16, 2023
+	Changed quarkgraphics.c to no longer track a static "is_running" boolean for the main loop. 
+	Changed the demo program to now update by checking if the HWND window_handle is not null. 
+	Adding console logging system that allows for displaying messages, warning, and errors.
+	Added alert box system for Windows that shows the same log messages in the form of a graphical alert box.
+	Added functions to get min and max values for floats, and get min value for double.
+	Added bubble sort, insertion sort, and selection sort for int and float types.
+	Added linear and binary search for int and float types.
+
+December 23, 2023
+	Added a real demo program menu so that the user can select which modules to run.
+
+February 10, 2024
+	Removed quarkds, quarkalgo, and quarkgraphics modules. 
+	Changed back to a single file.
+	Comment adjustments.
+
+February 12, 2024
+	Added max and min values for long long and unsigned long long.
+	Removed demo program.
+	Started documentation.
