@@ -1,5 +1,5 @@
 # A small C89 (ANSI) library with no dependencies.
-Everything is compiled with ```-Wall -Wextra -ansi -pedantic``` for strict adherence to the C89 standard and is contained in one ```.h``` and ```.c``` file.
+Everything is compiled with ```-Wall -Wextra -ansi -pedantic``` for strict adherence to the C89 standard and is contained in one single ```.h``` file.
 
 # Overview
 
